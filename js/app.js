@@ -72,7 +72,6 @@
         				"x-rapidapi-key": "921646fa38mshb95e13d1bef7ef9p10f69ejsn9221034a9b2c"
         			}
         		}
-
         		$.ajax(settings).done(function (response) {
         			console.log(response);
         		});
@@ -80,7 +79,16 @@
         	
         } else if (keyCode === UP_ARROW_BUTTON) {
 
-        	console.log("UP Button");
+        	var webSocketUrl = 'wss://localhost:8080/';
+        	var webSocket = new WebSocket(webSocketUrl);
+        	
+        	webSocket.onopen = function(e){
+        		console.log('connection open, readyState: ' + e.target.readyState);
+        	};
+        	
+        	webSocket.onerror = function(e) {
+				console.log('Error' + e.target.readyState);
+			};
         	
         } else if (keyCode === RIGHT_ARROW_BUTTON) {
            
